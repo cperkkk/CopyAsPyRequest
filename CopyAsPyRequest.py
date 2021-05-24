@@ -43,11 +43,11 @@ class BurpExtender(IBurpExtender, IContextMenuFactory):
         plainReq = str(bytearray(self.context.getSelectedMessages()[0].getRequest()))
 
         headers = {
-            'authority': 'curl.haxx.se',
+            'authority': 'curl.se',
             'pragma': 'no-cache',
             'cache-control': 'no-cache',
             'upgrade-insecure-requests': '1',
-            'origin': 'https://curl.haxx.se',
+            'origin': 'https://curl.se',
             'content-type': 'application/x-www-form-urlencoded',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -55,7 +55,7 @@ class BurpExtender(IBurpExtender, IContextMenuFactory):
             'sec-fetch-mode': 'navigate',
             'sec-fetch-user': '?1',
             'sec-fetch-dest': 'document',
-            'referer': 'https://curl.haxx.se/h2c/',
+            'referer': 'https://curl.se/h2c/',
             'accept-language': 'en-US,en;q=0.9,id;q=0.8,fr;q=0.7',
         }
 
@@ -64,7 +64,7 @@ class BurpExtender(IBurpExtender, IContextMenuFactory):
         }
 
         # trust burp CA
-        response = requests.post('https://curl.haxx.se/h2c/', headers=headers, data=data, verify=False).content
+        response = requests.post('https://curl.se/h2c/', headers=headers, data=data, verify=False).content
         start = response.find('curl --header')
         offset = response[start:].find('\n')        
 
